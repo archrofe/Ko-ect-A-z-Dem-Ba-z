@@ -9,8 +9,12 @@ namespace LoopsArrays
 
         public GameObject[] spawnPrefabs;
         public float spawnRadius = 1f;
-        public int spawnAmount = 5;
-                
+        public int spawnAmount = 1;
+        
+        public int currentSpawn;
+        public int maxSpawn = 10;
+        public int spawnInterval = 1;
+        private bool hasBalled = false;
 
         void OnDrawGizmos()
         {
@@ -20,19 +24,36 @@ namespace LoopsArrays
         // Use this for initialization
         void Start()
         {
-
-            InvokeRepeating("SpawnBalls", 2.0f, 1.0f);
-            
+            currentSpawn = 0;
+                  
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            if (!hasBalled && currentSpawn < maxSpawn)
+            {
+                
+                StartCoroutine(Fire());
+                currentSpawn++;
+            }
         }
+        
+        IEnumerator Fire()
+        {
+            // run whatever is here first
+            hasBalled = true;
 
+            // Spawn the bullet
+            SpawnBalls();
+            
 
+            yield return new WaitForSeconds(spawnInterval); // wait a few seconds
 
+            // run whatever is here last
+            hasBalled = false;
+        }
+        
         void SpawnBalls()
         {
             for (int i = 0; i < spawnAmount; i++)
