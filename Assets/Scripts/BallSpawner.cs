@@ -9,11 +9,12 @@ namespace LoopsArrays
 
         public GameObject[] spawnPrefabs;
         public float spawnRadius = 1f;
-        public int spawnAmount = 5;
-        // public float frequency = 5;
-        // public float amplitude = 6;
-
+        public int spawnAmount = 1;
         
+        public int currentSpawn;
+        public int maxSpawn = 10;
+        public int spawnInterval = 1;
+        private bool hasBalled = false;
 
         void OnDrawGizmos()
         {
@@ -23,22 +24,37 @@ namespace LoopsArrays
         // Use this for initialization
         void Start()
         {
-
-            InvokeRepeating("SpawnBalls", 2.0f, 1.0f);
-            // InvokeRepeating([function], [start seconds float], [repeating seconds float])
-
-
+            currentSpawn = 0;
+                  
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            if (!hasBalled && currentSpawn < maxSpawn)
+            {
+                
+                StartCoroutine(Fire());
+                currentSpawn++;
+            }
         }
+        
+        IEnumerator Fire()
+        {
+            // run whatever is here first
+            hasBalled = true;
 
+            // Spawn the bullet
+            SpawnBalls();
+            
 
+            yield return new WaitForSeconds(spawnInterval); // wait a few seconds
 
-        void SpawnBalls() // for 3D
+            // run whatever is here last
+            hasBalled = false;
+        }
+        
+        void SpawnBalls()
         {
             for (int i = 0; i < spawnAmount; i++)
             {
@@ -56,10 +72,6 @@ namespace LoopsArrays
                 float y = 0;
                 float z = 0; // 
                 Vector3 randomPos = transform.position + new Vector3(x, y, z); // calculate random position
-
-                // Cancel out the Z
-                // randomPos.z = 0;
-                // randomPos.y = 0;
 
                 // Set spawned object's position
                 clone.transform.position = randomPos;                               
