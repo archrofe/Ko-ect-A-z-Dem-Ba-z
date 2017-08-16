@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float movementSpeed = 5;
     public float acceleration = 50f;
     public float deceleration = .1f;
+    public Text countText;
 
     private Rigidbody2D rigid;
+    private int count;
 
     // Use this for initialization
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        count = 0;
+        SetCountText();
     }
 
     // Update is called once per frame
@@ -34,5 +39,18 @@ public class Player : MonoBehaviour
 
         //Deceleration
         rigid.velocity += -rigid.velocity * deceleration;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Balls"))
+            {
+            other.gameObject.SetActive(false);
+            count = count + 1;
+            SetCountText();
+        }
+    }
+    void SetCountText()
+    {
+    countText.text = "Score:" + count.ToString();
     }
 }
