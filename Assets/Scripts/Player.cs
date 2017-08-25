@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             SetCountText();
         }
 
-        if (other.gameObject.CompareTag("GumDropCandy"))
+        if (other.gameObject.CompareTag("GhostCandy"))
         {
             other.gameObject.SetActive(false);
             count = count - 2;
