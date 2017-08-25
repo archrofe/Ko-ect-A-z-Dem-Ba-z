@@ -42,15 +42,37 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Balls"))
-            {
+        if (other.gameObject.CompareTag("AverageCandy"))
+        {
             other.gameObject.SetActive(false);
             count = count + 1;
             SetCountText();
         }
+
+        if (other.gameObject.CompareTag("FastCandy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 5;
+            SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("BigCandy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 10;
+            SetCountText();
+        }
+
+        if (other.gameObject.CompareTag("GumDropCandy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count - 2;
+            SetCountText();
+        }
     }
+
     void SetCountText()
     {
-    countText.text = "Score:" + count.ToString();
+        countText.text = "Score:" + count.ToString();
     }
 }
