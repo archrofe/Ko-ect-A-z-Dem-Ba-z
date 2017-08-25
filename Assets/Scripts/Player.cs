@@ -73,6 +73,6 @@ public class Player : MonoBehaviour
 
     void SetCountText()
     {
-        countText.text = "Score:" + count.ToString();
+        countText.text = "Score: " + count.ToString();
     }
 }
