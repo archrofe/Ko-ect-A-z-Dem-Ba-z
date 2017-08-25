@@ -76,9 +76,6 @@ namespace LoopsArrays
                 // Set spawned object's position
                 clone.transform.position = randomPos;                               
             }
-        }
-
-        
-
+        }       
     }
 }
