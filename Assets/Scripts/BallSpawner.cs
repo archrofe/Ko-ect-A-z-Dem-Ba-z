@@ -10,12 +10,12 @@ namespace LoopsArrays
         public GameObject[] spawnPrefabs;
         public float spawnRadius = 1f;
         public int spawnAmount = 1;
-        
         public int currentSpawn;
         public int maxSpawn = 10;
         public int spawnInterval = 1;
+
         private bool hasBalled = false;
-        
+
 
         void OnDrawGizmos()
         {
@@ -26,22 +26,19 @@ namespace LoopsArrays
         void Start()
         {
             currentSpawn = 0;
-                  
         }
 
         // Update is called once per frame
         void Update()
         {
-            
-
             if (!hasBalled && currentSpawn < maxSpawn)
             {
-                
+
                 StartCoroutine(Fire());
                 currentSpawn++;
             }
         }
-        
+
         IEnumerator Fire()
         {
             // run whatever is here first
@@ -49,14 +46,14 @@ namespace LoopsArrays
 
             // Spawn the bullet
             SpawnBalls();
-            
+
 
             yield return new WaitForSeconds(spawnInterval); // wait a few seconds
 
             // run whatever is here last
             hasBalled = false;
         }
-        
+
         void SpawnBalls()
         {
             for (int i = 0; i < spawnAmount; i++)
@@ -69,7 +66,7 @@ namespace LoopsArrays
 
                 // Spawned new GameObject
                 GameObject clone = Instantiate(randomPrefab);
-                
+
                 // Calculate random position within sphere
                 Vector3 randomPos = transform.position + Random.insideUnitSphere * spawnRadius; // calculate random position
 
@@ -79,6 +76,6 @@ namespace LoopsArrays
                 // Set spawned object's position
                 clone.transform.position = randomPos;
             }
-        }       
+        }
     }
 }

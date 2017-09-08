@@ -10,9 +10,13 @@ public class Player : MonoBehaviour
     public float acceleration = 50f;
     public float deceleration = .1f;
     public Text countText;
+    public GameObject player;
+    public GameObject superPlayer;
+    public int superTime = 5;
 
     private Rigidbody2D rigid;
     private int count;
+    public bool spacePressed;
 
     // Use this for initialization
     void Start()
@@ -20,6 +24,8 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         count = 0;
         SetCountText();
+        player.SetActive(true);
+        superPlayer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +48,18 @@ public class Player : MonoBehaviour
         rigid.velocity += -rigid.velocity * deceleration;
 
         Shortcuts();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Fire());
+            /*if (superTime == 0)
+            {
+                superPlayer.SetActive(false);
+                player.SetActive(true);
+            }*/
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("AverageCandy"))
@@ -86,9 +103,34 @@ public class Player : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.KeypadEnter))
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    void SuperMove()
+    {
+            superPlayer.SetActive(true);
+            player.SetActive(false);
+    }
+
+    IEnumerator Fire()
+    {
+        spacePressed = true;
+
+        SuperMove();
+
+        yield return new WaitForSeconds(superTime); // wait a few seconds
+
+        // run whatever is here last
+        spacePressed = false;
+        
+    }
+
+    void LateUpdate()
+    {
+        superPlayer.transform.position = player.transform.position;
+        /*player.transform.position = superPlayer.transform.position;*/
     }
 }
