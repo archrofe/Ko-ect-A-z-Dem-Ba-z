@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigid;
     private int count;
-    public bool spacePressed;
+    public bool superOn;
 
     // Use this for initialization
     void Start()
@@ -26,11 +26,13 @@ public class Player : MonoBehaviour
         SetCountText();
         player.SetActive(true);
         superPlayer.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Player Movement
         // If user presses D
         if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.RightArrow)))
         {
@@ -46,20 +48,26 @@ public class Player : MonoBehaviour
 
         //Deceleration
         rigid.velocity += -rigid.velocity * deceleration;
+        #endregion
 
         Shortcuts();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+
+        if (Input.GetKey(KeyCode.Space))
         {
+            
             StartCoroutine(Fire());
-            /*if (superTime == 0)
+
+            if (superOn == false)
             {
                 superPlayer.SetActive(false);
                 player.SetActive(true);
-            }*/
+            }
         }
     }
 
+    #region Triggers and Scoring
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("AverageCandy"))
@@ -85,7 +93,6 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("GhostCandy"))
         {
-            // other.gameObject.SetActive(false);
             count = count - 100;
             SetCountText();
         }
@@ -95,7 +102,9 @@ public class Player : MonoBehaviour
     {
         countText.text = "Score: " + count.ToString();
     }
+    #endregion
 
+    #region Shortcuts
     void Shortcuts()
     {
         if (Input.GetKey(KeyCode.Escape))
@@ -103,34 +112,48 @@ public class Player : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKey(KeyCode.KeypadEnter))
+        if (Input.GetKey(KeyCode.F1))
         {
             SceneManager.LoadScene(0);
         }
     }
+    #endregion
 
-    void SuperMove()
+    void SuperMoveOn()
     {
-            superPlayer.SetActive(true);
-            player.SetActive(false);
+        superPlayer.transform.position = player.transform.position;
+        superPlayer.SetActive(true);
+        player.SetActive(false);
+    }
+
+
+    void SuperMoveOff()
+    {
+        player.transform.position = superPlayer.transform.position;
+        superPlayer.SetActive(false);
+        player.SetActive(true);
     }
 
     IEnumerator Fire()
     {
-        spacePressed = true;
+        superOn = true;
 
-        SuperMove();
+        
+
+        SuperMoveOn();
 
         yield return new WaitForSeconds(superTime); // wait a few seconds
 
         // run whatever is here last
-        spacePressed = false;
+        SuperMoveOff();
+
+        superOn = false;
         
     }
 
     void LateUpdate()
     {
-        superPlayer.transform.position = player.transform.position;
-        /*player.transform.position = superPlayer.transform.position;*/
+        
+        //
     }
 }
