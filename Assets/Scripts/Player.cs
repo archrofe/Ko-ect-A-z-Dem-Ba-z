@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class Player : MonoBehaviour
 
         //Deceleration
         rigid.velocity += -rigid.velocity * deceleration;
+
+        Shortcuts();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -65,8 +68,8 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("GhostCandy"))
         {
-            other.gameObject.SetActive(false);
-            count = count - 2;
+            // other.gameObject.SetActive(false);
+            count = count - 100;
             SetCountText();
         }
     }
@@ -74,5 +77,18 @@ public class Player : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Score: " + count.ToString();
+    }
+
+    void Shortcuts()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

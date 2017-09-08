@@ -15,6 +15,7 @@ namespace LoopsArrays
         public int maxSpawn = 10;
         public int spawnInterval = 1;
         private bool hasBalled = false;
+        
 
         void OnDrawGizmos()
         {
@@ -31,6 +32,8 @@ namespace LoopsArrays
         // Update is called once per frame
         void Update()
         {
+            
+
             if (!hasBalled && currentSpawn < maxSpawn)
             {
                 
@@ -64,17 +67,17 @@ namespace LoopsArrays
                 // Store randomly selected prefab
                 GameObject randomPrefab = spawnPrefabs[randomIndex];
 
-                // Instantiate randomly selected prefab
+                // Spawned new GameObject
                 GameObject clone = Instantiate(randomPrefab);
-
+                
                 // Calculate random position within sphere
-                float x = 0; // 
-                float y = 0;
-                float z = 0; // 
-                Vector3 randomPos = transform.position + new Vector3(x, y, z); // calculate random position
+                Vector3 randomPos = transform.position + Random.insideUnitSphere * spawnRadius; // calculate random position
+
+                // Cancel out the Z
+                randomPos.z = 0;
 
                 // Set spawned object's position
-                clone.transform.position = randomPos;                               
+                clone.transform.position = randomPos;
             }
         }       
     }
