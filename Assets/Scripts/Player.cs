@@ -9,9 +9,14 @@ public class Player : MonoBehaviour
     public float movementSpeed = 5;
     public float acceleration = 50f;
     public float deceleration = .1f;
+   
     public Text countText;
+
     public GameObject player;
-    public GameObject superPlayer;
+    public GameObject superPlayer;   
+    public GameObject littleSpawner;
+    public GameObject littleSpawnerEvil;
+
     //public int superDelay = 3;
 
     private Rigidbody2D rigid;
@@ -24,6 +29,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+         
+        littleSpawner.SetActive(false);
+        littleSpawnerEvil.SetActive(false);
 
         count = 0;
         SetCountText();
@@ -59,13 +67,45 @@ public class Player : MonoBehaviour
             Invoke("SuperMoveOff", superCooldown);
         }
 
+       
+        
     }
-    
+
 
     #region Triggers and Scoring
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("AverageCandy"))
+        if (other.gameObject.CompareTag("Holy Candy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 100;
+            SetCountText();
+            littleSpawner.SetActive(true);          
+        }
+
+        if (other.gameObject.CompareTag("Little Holy Candy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count + 15;
+            SetCountText();            
+        }
+
+        if (other.gameObject.CompareTag("Little Evil Candy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count -15;
+            SetCountText();            
+        }
+
+        if (other.gameObject.CompareTag("Evil Candy"))
+        {
+            other.gameObject.SetActive(false);
+            count = count - 100;
+            SetCountText();
+            littleSpawnerEvil.SetActive(true);
+        }
+
+            if (other.gameObject.CompareTag("AverageCandy"))
         {
             other.gameObject.SetActive(false);
             count = count + 1;
@@ -128,7 +168,7 @@ public class Player : MonoBehaviour
         superPlayer.SetActive(false);
         player.SetActive(true);
     }
-    
+
 
     #endregion
 
