@@ -17,13 +17,11 @@ public class Player : MonoBehaviour
     public GameObject littleSpawner;
     public GameObject littleSpawnerEvil;
 
-    //public int superDelay = 3;
-
     private Rigidbody2D rigid;
     private int count;
 
-    public float superCooldown = 3f;
-
+    public float superCooldown = 5f;
+    private bool isSuperOn;
 
     // Use this for initialization
     void Start()
@@ -36,6 +34,7 @@ public class Player : MonoBehaviour
         count = 0;
         SetCountText();
 
+        isSuperOn = false;
     }
 
     // Update is called once per frame
@@ -61,10 +60,9 @@ public class Player : MonoBehaviour
 
         Shortcuts();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && (isSuperOn == false) && (count >= 100))
         {
             SuperMoveOn();
-            Invoke("SuperMoveOff", superCooldown);
         }
 
        
@@ -157,8 +155,11 @@ public class Player : MonoBehaviour
     #region SuperMove!
     void SuperMoveOn()
     {
+        isSuperOn = true;
+        count = count - 100;
         superPlayer.SetActive(true);
         player.SetActive(false);
+        Invoke("SuperMoveOff", superCooldown);
     }
 
 
@@ -167,6 +168,7 @@ public class Player : MonoBehaviour
 
         superPlayer.SetActive(false);
         player.SetActive(true);
+        isSuperOn = false;
     }
 
 
