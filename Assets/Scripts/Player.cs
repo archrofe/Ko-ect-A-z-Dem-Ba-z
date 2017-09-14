@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
     public int wave6Score = 9000; // to start Wave 6
     public int bossFightScore = 13000; // to start Boss Fight
 
+    [Header("Boss")]
+    public GameObject theBoss;
 
     // Use this for initialization
     void Start()
@@ -65,6 +67,8 @@ public class Player : MonoBehaviour
         SetCountText();
 
         isSuperOn = false;
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -287,6 +291,7 @@ public class Player : MonoBehaviour
                     holySpawner.SetActive(false);
                     hardGhostSpawner.SetActive(false);
                     hardEvilSpawner.SetActive(false);
+                    theBoss.SetActive(true);
                     Debug.Log("Boss Fight!");
                 }
 
