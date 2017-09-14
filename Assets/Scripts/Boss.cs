@@ -9,20 +9,20 @@ public class Boss : MonoBehaviour
     public Transform pos3; // left!
     public float pos1Speed;
 
-    public bool bossStarted = false;
-    public bool bossFirstMove = false;
-
     public GameObject bossSpawner1;
     public GameObject bossSpawner2;
 
-	// Use this for initialization
-	void Start ()
+    private bool bossStarted = false;
+    private bool bossFirstMoveDone = false;
+
+    // Use this for initialization
+    void Start()
     {
-        
+
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (bossStarted == false)
         {
@@ -39,42 +39,20 @@ public class Boss : MonoBehaviour
 
         if (bossStarted == true)
         {
-            if (bossFirstMove == false)
+            if (bossFirstMoveDone == false)
             {
                 GoRight();
-                bossFirstMove = true;
-            }
-
-            if (bossFirstMove == true)
-            {
                 if (transform.position == pos2.position)
                 {
-                    GoLeft();
-                }
-
-                if (transform.position == pos3.position)
-                {
-                    GoRight();
+                    bossFirstMoveDone = true;
                 }
             }
+
         }
 
-        /*if (bossStarted == false)
-        {
-            GoToPos1();
-
-            if (transform.position == pos1.position)
-            {
-                bossStarted = true;
-            }
-        }
-
-        if (bossStarted == true)
-        {
-            Debug.Log("bossStarted == true");
-        }*/
     }
-    
+
+
     void GoToPos1()
     {
         transform.position = Vector3.MoveTowards(transform.position, pos1.position, pos1Speed * Time.deltaTime);
@@ -88,5 +66,18 @@ public class Boss : MonoBehaviour
     void GoLeft()
     {
         transform.position = Vector3.MoveTowards(transform.position, pos3.position, pos1Speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D (Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Boss Right"))
+        {
+            GoLeft();
+        }
+
+        if (other.gameObject.CompareTag("Boss Left"))
+        {
+            GoRight();
+        }
     }
 }

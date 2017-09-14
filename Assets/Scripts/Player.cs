@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public GameObject superPlayer;
     public float superCooldown = 3f;
     private bool isSuperOn;
-    public int superMoveCost = 100;
+    public int superMoveCost = 1000;
 
     [Header("Spawners")]
     public GameObject littleHolySpawner;
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 
         Shortcuts();
 
-        if (Input.GetKeyDown(KeyCode.Space) && (isSuperOn == false) /*&& (count >= superMoveCost)*/)
+        if (Input.GetKeyDown(KeyCode.Space) && (isSuperOn == false) && (count >= superMoveCost))
         {
             SuperMoveOn();
         }
@@ -188,6 +188,12 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+        if (Input.GetKey(KeyCode.F12))
+        {
+            count = count + 10000; // for Debugging purposes, to be removed from final build
+            SetCountText();
+        }
+
     }
     #endregion
 
@@ -195,7 +201,8 @@ public class Player : MonoBehaviour
     void SuperMoveOn()
     {
         isSuperOn = true;
-        count = count - superMoveCost; // why doesn't this part work?
+        count = count - superMoveCost;
+        SetCountText();
         superPlayer.SetActive(true);
         player.SetActive(false);
         Invoke("SuperMoveOff", superCooldown);
