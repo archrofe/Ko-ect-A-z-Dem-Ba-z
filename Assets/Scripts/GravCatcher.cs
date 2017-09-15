@@ -27,7 +27,7 @@ public class GravCatcher : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, gravityBall.position, speedDelta);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Gravity Ball"))
         {
@@ -35,7 +35,7 @@ public class GravCatcher : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Gravity Ball"))
         {
