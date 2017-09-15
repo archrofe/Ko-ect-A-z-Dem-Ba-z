@@ -179,22 +179,11 @@ public class Player : MonoBehaviour
     #region Shortcuts
     void Shortcuts()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
-        if (Input.GetKey(KeyCode.F1))
-        {
-            SceneManager.LoadScene(0);
-        }
-
         if (Input.GetKey(KeyCode.F12))
         {
             count = count + 10000; // for Debugging purposes, to be removed from final build
             SetCountText();
         }
-
     }
     #endregion
 
