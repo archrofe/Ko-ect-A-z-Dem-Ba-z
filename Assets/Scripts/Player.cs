@@ -161,6 +161,7 @@ public class Player : MonoBehaviour
 
             if (other.gameObject.CompareTag("GhostCandy"))
             {
+                other.gameObject.SetActive(false);
                 count = count - ghostPoints;
                 SetCountText();
             }
