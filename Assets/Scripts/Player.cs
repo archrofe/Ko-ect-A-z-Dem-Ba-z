@@ -217,7 +217,6 @@ public class Player : MonoBehaviour
             {
                 redSpawner.SetActive(true); // Activate Red Spawner
                 wave1Done = true; // Flag Wave 1 as completed
-                Debug.Log("Wave 1 Done!");
             }
         }
 
@@ -228,7 +227,6 @@ public class Player : MonoBehaviour
             {
                 ghostSpawner.SetActive(true);
                 wave2Done = true; // Wave 2 done
-                Debug.Log("Wave 2 Done!");
             }
         }
 
@@ -239,7 +237,6 @@ public class Player : MonoBehaviour
             {
                 holySpawner.SetActive(true);
                 wave3Done = true; // Wave 3 done
-                Debug.Log("Wave 3 Done!");
             }
         }
 
@@ -253,7 +250,6 @@ public class Player : MonoBehaviour
                 {
                     evilSpawner.SetActive(true);
                     wave4Done = true; // Wave 4 done
-                    Debug.Log("Wave 4 Done!");
                 }
             }
 
@@ -271,7 +267,6 @@ public class Player : MonoBehaviour
                     hardGhostSpawner.SetActive(true);
                     hardEvilSpawner.SetActive(true);
                     wave5Done = true; // Wave 5 done, starting Wave 6 (Hard Wave) now
-                    Debug.Log("Wave 5 Done! Starting Wave 6 (Hard Wave)!");
                 }
             }
         }
@@ -288,7 +283,7 @@ public class Player : MonoBehaviour
                     holySpawner.SetActive(false);
                     hardGhostSpawner.SetActive(false);
                     hardEvilSpawner.SetActive(false);
-                    theBoss.SetActive(true);
+                    //theBoss.SetActive(true);
                     Debug.Log("Boss Fight!");
                 }
 
