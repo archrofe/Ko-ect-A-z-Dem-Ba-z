@@ -20,9 +20,9 @@ public class Timer : MonoBehaviour
     void Update()
     {
         {
-            if (timer <= 0)
+            if (timer <= 1)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(2);
                 Cursor.visible = true;
             }
 

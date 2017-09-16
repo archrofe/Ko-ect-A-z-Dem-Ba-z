@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("Scoring")]
     public Text countText;
-    public int count;
+    public static int count;
     public int bluePoints = 50;
     public int redPoints = 100;
     public int ghostPoints = 1000;
