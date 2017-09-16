@@ -17,29 +17,17 @@ Platform assembly: C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Man
 Loading C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.145 seconds
+- Completed reload, in  0.030 seconds
 Platform assembly: C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\User\Source\Repos\Ko-ect-A-z-Dem-Ba-z\Build_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 75Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.492505 ms
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 20.714911 ms
-
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 535.
-Total: 4.207751 ms (FindLiveObjects: 0.050240 ms CreateObjectMapping: 0.032320 ms MarkObjects: 0.236804 ms  DeleteObjects: 3.887105 ms)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.234260 ms
-
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 470.
-Total: 6.619632 ms (FindLiveObjects: 0.037120 ms CreateObjectMapping: 0.034560 ms MarkObjects: 0.221443 ms  DeleteObjects: 6.326187 ms)
-
+UnloadTime: 1.069458 ms
 Quit
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 31ec -> priority: 1 
+  Thread -> id: 35e0 -> priority: 1 
