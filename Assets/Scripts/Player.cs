@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [Header("Super Move")]
     public GameObject player;
     public GameObject superPlayer;
-    public float superCooldown = 3f;
+    public float superCooldown = 10f;
     private bool isSuperOn;
     public int superMoveCost = 1000;
 
@@ -225,7 +225,6 @@ public class Player : MonoBehaviour
             if (count >= wave3Score)
             {
                 ghostSpawner.SetActive(true);
-                windSpawner.SetActive(true);
                 wave2Done = true; // Wave 2 done
             }
         }
@@ -236,7 +235,7 @@ public class Player : MonoBehaviour
             if (count >= wave4Score)
             {
                 holySpawner.SetActive(true);
-                gravSpawner.SetActive(true);
+                windSpawner.SetActive(true);
                 wave3Done = true; // Wave 3 done
             }
         }
@@ -250,10 +249,10 @@ public class Player : MonoBehaviour
                 if (count >= wave5Score)
                 {
                     evilSpawner.SetActive(true);
+                    gravSpawner.SetActive(true);
                     wave4Done = true; // Wave 4 done
                 }
             }
-
         }
 
         // to start Wave 6 (Hard Wave)
@@ -287,7 +286,6 @@ public class Player : MonoBehaviour
                     //theBoss.SetActive(true);
                     Debug.Log("Boss Fight!");
                 }
-
             }
         }
     }
