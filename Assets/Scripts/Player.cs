@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject redSpawner;
     public GameObject ghostSpawner;
     public GameObject gravSpawner;
+    public GameObject windSpawner;
     public GameObject holySpawner;
     public GameObject evilSpawner;
     public GameObject hardGhostSpawner;
@@ -166,8 +167,6 @@ public class Player : MonoBehaviour
                 count = count - ghostPoints;
                 SetCountText();
             }
-
-
         }
     }
 
@@ -182,7 +181,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F12))
         {
-            count = count + 10000; // for Debugging purposes, to be removed from final build
+            count = count + 1000; // for Debugging purposes, to be removed from final build
             SetCountText();
         }
     }
@@ -208,7 +207,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Waves
-
     void Waves()
     {
         // to start Wave 2
@@ -227,7 +225,7 @@ public class Player : MonoBehaviour
             if (count >= wave3Score)
             {
                 ghostSpawner.SetActive(true);
-                gravSpawner.SetActive(true);
+                windSpawner.SetActive(true);
                 wave2Done = true; // Wave 2 done
             }
         }
@@ -238,6 +236,7 @@ public class Player : MonoBehaviour
             if (count >= wave4Score)
             {
                 holySpawner.SetActive(true);
+                gravSpawner.SetActive(true);
                 wave3Done = true; // Wave 3 done
             }
         }
@@ -292,6 +291,5 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     #endregion
 }
