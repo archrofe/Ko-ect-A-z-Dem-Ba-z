@@ -36,13 +36,14 @@ public class Player : MonoBehaviour
     public GameObject blueSpawner;
     public GameObject redSpawner;
     public GameObject ghostSpawner;
+    public GameObject gravSpawner;
     public GameObject holySpawner;
     public GameObject evilSpawner;
     public GameObject hardGhostSpawner;
     public GameObject hardEvilSpawner;
     private bool wave1Done = false; // starts with Blue Candy, adds Red Candy on True
     private bool wave2Done = false; // adds Red Candy
-    private bool wave3Done = false; // adds Ghost Candy
+    private bool wave3Done = false; // adds Ghost & Grav Candy
     private bool wave4Done = false; // adds Holy Candy
     private bool wave5Done = false; // adds Evil Candy
     private bool wave6Done = false; // starts Hard Wave on True
@@ -226,6 +227,7 @@ public class Player : MonoBehaviour
             if (count >= wave3Score)
             {
                 ghostSpawner.SetActive(true);
+                gravSpawner.SetActive(true);
                 wave2Done = true; // Wave 2 done
             }
         }

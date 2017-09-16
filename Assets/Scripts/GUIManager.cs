@@ -10,9 +10,6 @@ public class GUIManager : MonoBehaviour
     public bool gameScene;
     public bool showPause;
     public bool pause;
-    /* Setting bool/true of false
-    public bool fullscreen;
-    */
 
     [Header("References")]
     public GameObject menu;
@@ -43,7 +40,6 @@ public class GUIManager : MonoBehaviour
         else
         {
             Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             pause = true;
             menu.SetActive(true);

@@ -35,13 +35,7 @@ public class Timer : MonoBehaviour
 
                 clockTime = string.Format("{0:0}:{1:00}", mins, secs);
                 clockText.text = clockTime;
-                
             }
         }
-
-        
-  
-
-    }
-    
+    }    
 }
