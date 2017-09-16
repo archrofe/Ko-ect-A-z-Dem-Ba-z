@@ -6,7 +6,6 @@ namespace LoopsArrays
 {
     public class BallSpawner : MonoBehaviour
     {
-
         public GameObject[] spawnPrefabs;
         public float spawnRadius = 1f;
         public int spawnAmount = 1;
@@ -15,7 +14,6 @@ namespace LoopsArrays
         public int spawnInterval = 1;
 
         private bool hasBalled = false;
-
 
         void OnDrawGizmos()
         {
@@ -46,7 +44,6 @@ namespace LoopsArrays
 
             // Spawn the bullet
             SpawnBalls();
-
 
             yield return new WaitForSeconds(spawnInterval); // wait a few seconds
 

@@ -51,7 +51,6 @@ public class GravCatcher : MonoBehaviour
         }
     }
 
-
     /*void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, spawnRadius);

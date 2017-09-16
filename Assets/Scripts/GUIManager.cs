@@ -35,6 +35,7 @@ public class GUIManager : MonoBehaviour
                 showPause = false;
                 menu.SetActive(true);
             }
+
             return false;
         }
         else

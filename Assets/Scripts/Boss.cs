@@ -47,11 +47,8 @@ public class Boss : MonoBehaviour
                     bossFirstMoveDone = true;
                 }
             }
-
         }
-
     }
-
 
     void GoToPos1()
     {

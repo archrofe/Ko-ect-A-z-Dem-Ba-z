@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class DestroyCandy : MonoBehaviour
 {
-
     public int destroyTimer = 30;
 
 	// Use this for initialization
