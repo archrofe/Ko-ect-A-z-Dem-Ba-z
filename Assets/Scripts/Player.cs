@@ -210,6 +210,18 @@ public class Player : MonoBehaviour
     #region Waves
     void Waves()
     {
+        if (count < 0)
+        {
+            Cursor.visible = true;
+            SceneManager.LoadScene(2);
+        }
+
+        if (count >= winScore)
+        {
+            Cursor.visible = true;
+            SceneManager.LoadScene(3);
+        }
+
         // to start Wave 2
         if (wave1Done == false) // Wave 1 in process
         {
@@ -289,18 +301,6 @@ public class Player : MonoBehaviour
                 }
             }
         }*/
-
-        if (wave5Done == true)
-        {
-            if (wave6Done == false)
-            {
-                if (count >= winScore)
-                {
-                    Cursor.visible = true;
-                    SceneManager.LoadScene(3);
-                }
-            }
-        }
     }
     #endregion
 }
