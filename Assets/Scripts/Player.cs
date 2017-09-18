@@ -296,6 +296,7 @@ public class Player : MonoBehaviour
             {
                 if (count >= winScore)
                 {
+                    Cursor.visible = true;
                     SceneManager.LoadScene(3);
                 }
             }
