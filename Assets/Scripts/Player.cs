@@ -55,7 +55,8 @@ public class Player : MonoBehaviour
     public int wave4Score = 5000; // to start Wave 4
     public int wave5Score = 7000; // to start Wave 5
     public int wave6Score = 9000; // to start Wave 6
-    public int bossFightScore = 13000; // to start Boss Fight
+    public int winScore = 10000;
+    //public int bossFightScore = 13000; // to start Boss Fight
 
     [Header("Boss")]
     public GameObject theBoss;
@@ -271,7 +272,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // to start Boss Fight
+        /*// to start Boss Fight
         if (wave5Done == true) // Wave 5 done
         {
             if (wave6Done == false) // but in Wave 6 (Hard Wave)
@@ -285,6 +286,17 @@ public class Player : MonoBehaviour
                     hardEvilSpawner.SetActive(false);
                     //theBoss.SetActive(true);
                     Debug.Log("Boss Fight!");
+                }
+            }
+        }*/
+
+        if (wave5Done == true)
+        {
+            if (wave6Done == false)
+            {
+                if (count >= winScore)
+                {
+                    SceneManager.LoadScene(3);
                 }
             }
         }
