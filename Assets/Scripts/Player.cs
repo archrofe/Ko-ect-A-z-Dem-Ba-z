@@ -6,6 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [Header("Sound")]
+    public AudioSource collect;
+    public AudioSource collect1;
+    public AudioSource collect2;
+    public AudioSource collect3;
+    public AudioSource collect4;
+    public AudioSource collect5;
+    public AudioSource collect6;
+
+    private int random;
+
     [Header("Movement")]
     public float movementSpeed = 5;
     public float acceleration = 500f;
@@ -64,6 +75,14 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        collect.enabled = false;
+        collect1.enabled = false;
+        collect2.enabled = false;
+        collect3.enabled = false;
+        collect4.enabled = false;
+        collect5.enabled = false;
+        collect6.enabled = false;
+
         rigid = GetComponent<Rigidbody2D>();
 
         count = 0;
@@ -77,6 +96,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        random = Random.Range(1, 8);
+
         #region Player Movement
         // If user presses D
         if (Input.GetKey(KeyCode.D) || (Input.GetKey(KeyCode.RightArrow)))
@@ -104,6 +125,69 @@ public class Player : MonoBehaviour
 
         Waves();
     }
+    IEnumerator Collect()
+    {
+        collect.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect.enabled = false;
+    }
+
+    IEnumerator Collect1()
+    {
+        collect1.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect1.enabled = false;
+    }
+
+    IEnumerator Collect2()
+    {
+        collect2.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+
+        collect2.enabled = false;
+    }
+
+    IEnumerator Collect3()
+    {
+        collect3.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect3.enabled = false;
+    }
+
+    IEnumerator Collect4()
+    {
+        collect4.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect4.enabled = false;
+    }
+
+    IEnumerator Collect5()
+    {
+        collect5.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect5.enabled = false;
+    }
+
+    IEnumerator Collect6()
+    {
+        collect6.enabled = true;
+
+        yield return new WaitForSeconds(.1f);
+
+        collect6.enabled = false;
+    }
 
     IEnumerator Holy()
     {
@@ -116,6 +200,37 @@ public class Player : MonoBehaviour
     #region Triggers and Scoring
     private void OnCollisionEnter2D(Collision2D other)
     {
+
+        if(random == 1)
+        {
+            StartCoroutine(Collect());
+        }
+
+        if (random == 2)
+        {
+            StartCoroutine(Collect1());
+        }
+        if (random == 3)
+        {
+            StartCoroutine(Collect2());
+        }
+        if (random == 4)
+        {
+            StartCoroutine(Collect3());
+        }
+        if (random == 5)
+        {
+            StartCoroutine(Collect4());
+        }
+        if (random == 6)
+        {
+            StartCoroutine(Collect5());
+        }
+        if (random == 7)
+        {
+            StartCoroutine(Collect6());
+        }
+
         if (isSuperOn == false)
         {
             
