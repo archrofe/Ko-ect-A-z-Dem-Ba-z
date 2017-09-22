@@ -35,6 +35,11 @@ public class Boss : MonoBehaviour
                 bossSpawner2.SetActive(true);
                 bossStarted = true;
             }
+
+            /*if (transform.position == pos2.position)
+            {
+                GoLeft();
+            }*/
         }
 
         if (bossStarted == true)
@@ -42,10 +47,12 @@ public class Boss : MonoBehaviour
             if (bossFirstMoveDone == false)
             {
                 GoRight();
-                if (transform.position == pos2.position)
-                {
-                    bossFirstMoveDone = true;
-                }
+            }
+
+
+            if (transform.position == pos2.position)
+            {
+                GoLeft();
             }
         }
     }
@@ -67,7 +74,7 @@ public class Boss : MonoBehaviour
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.CompareTag("Boss Right"))
+        /*if (other.gameObject.CompareTag("Boss Right"))
         {
             GoLeft();
         }
@@ -75,6 +82,11 @@ public class Boss : MonoBehaviour
         if (other.gameObject.CompareTag("Boss Left"))
         {
             GoRight();
+        }*/
+
+        if (other.gameObject.CompareTag("Boss Candy"))
+        {
+            Debug.Log("Boss Candy hit Boss!");
         }
     }
 }
