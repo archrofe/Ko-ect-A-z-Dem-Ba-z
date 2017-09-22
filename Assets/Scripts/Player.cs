@@ -125,6 +125,8 @@ public class Player : MonoBehaviour
 
         Waves();
     }
+
+    #region IEnumerators
     IEnumerator Collect()
     {
         collect.enabled = true;
@@ -197,7 +199,9 @@ public class Player : MonoBehaviour
 
         littleHolySpawner.SetActive(false);
     }
-    #region Triggers and Scoring
+    #endregion
+
+    #region Triggers, Scoring, and CoRoutines
     private void OnCollisionEnter2D(Collision2D other)
     {
 
@@ -302,7 +306,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    #region Shortcuts
+    #region Shortcuts for Debugging
     void Shortcuts()
     {
         if (Input.GetKey(KeyCode.F12))
@@ -428,4 +432,5 @@ public class Player : MonoBehaviour
         }*/
     }
     #endregion
+
 }

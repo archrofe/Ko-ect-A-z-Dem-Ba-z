@@ -10,8 +10,6 @@ public class Timer : MonoBehaviour
     public string clockTime;
     public Text clockText;
 
-    //private static int winCondition;
-
     // Use this for initialization
     void Start()
     {
@@ -21,7 +19,10 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Winning();
+        if (Input.GetKey(KeyCode.F11)) // for DEBUGGING purposes!
+        {
+            timer = 20f;
+        }
 
         if (timer <= 1)
         {
@@ -42,8 +43,4 @@ public class Timer : MonoBehaviour
 
     }
 
-    /*void Winning()
-    {
-        winCondition = Player.winScore;
-    }*/
 }
