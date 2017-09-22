@@ -105,6 +105,14 @@ public class Player : MonoBehaviour
         Waves();
     }
 
+    IEnumerator Holy()
+    {
+        littleHolySpawner.SetActive(true);
+
+        yield return new WaitForSeconds(5);
+
+        littleHolySpawner.SetActive(false);
+    }
     #region Triggers and Scoring
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -116,7 +124,9 @@ public class Player : MonoBehaviour
                 other.gameObject.SetActive(false);
                 count = count + bigHolyPoints;
                 SetCountText();
-                littleHolySpawner.SetActive(true);
+
+                StartCoroutine(Holy());
+
             }
 
             if (other.gameObject.CompareTag("Little Holy Candy"))
