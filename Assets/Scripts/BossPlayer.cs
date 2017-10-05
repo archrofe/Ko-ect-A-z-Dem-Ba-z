@@ -126,7 +126,7 @@ public class BossPlayer : MonoBehaviour
             SuperMoveOn();
         }
 
-        //Waves();
+        Waves();
     }
 
     #region IEnumerators
@@ -346,7 +346,7 @@ public class BossPlayer : MonoBehaviour
     }
     #endregion
 
-    /*#region Waves
+    #region Waves
     void Waves()
     {
         if (count < 0)
@@ -355,6 +355,7 @@ public class BossPlayer : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
+        /*
         if (count >= winScore)
         {
             Cursor.visible = true;
@@ -423,24 +424,7 @@ public class BossPlayer : MonoBehaviour
             }
         }*/
 
-        /*// to start Boss Fight
-        if (wave5Done == true) // Wave 5 done
-        {
-            if (wave6Done == false) // but in Wave 6 (Hard Wave)
-            {
-                if (count >= bossFightScore)
-                {
-                    blueSpawner.SetActive(false);
-                    redSpawner.SetActive(false);
-                    holySpawner.SetActive(false);
-                    hardGhostSpawner.SetActive(false);
-                    hardEvilSpawner.SetActive(false);
-                    //theBoss.SetActive(true);
-                    Debug.Log("Boss Fight!");
-                }
-            }
-        }
     }
-    #endregion*/
+    #endregion
 
 }
