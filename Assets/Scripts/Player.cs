@@ -348,7 +348,7 @@ public class Player : MonoBehaviour
         if (count >= winScore)
         {
             Cursor.visible = true;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(11);
         }
 
         // to start Wave 2

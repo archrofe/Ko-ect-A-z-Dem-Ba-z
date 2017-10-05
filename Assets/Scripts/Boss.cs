@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -12,8 +13,11 @@ public class Boss : MonoBehaviour
     public GameObject bossSpawner1;
     public GameObject bossSpawner2;
 
-    private bool bossStarted = false;
-    private bool bossFirstMoveDone = false;
+    private bool bossStarted = false; // just used for Boss downward movement to Pos1 at start
+
+    private bool bossRightDone = false;
+
+    public int hitCount = 0;
 
     // Use this for initialization
     void Start()
@@ -38,11 +42,28 @@ public class Boss : MonoBehaviour
 
         if (bossStarted == true)
         {
-            if (bossFirstMoveDone == false)
+            if (bossRightDone == false)
             {
                 GoRight();
+
+                if (transform.position == pos2.position)
+                {
+                    bossRightDone = true;
+                }
+            }
+
+            if (bossRightDone == true)
+            {
+                GoLeft();
+
+                if (transform.position == pos3.position)
+                {
+                    bossRightDone = false;
+                }
             }
         }
+
+        HitDestroy();
     }
 
     void GoToPos1()
@@ -60,11 +81,22 @@ public class Boss : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, pos3.position, pos1Speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D (Collider2D other)
+    void OnTriggerExit2D (Collider2D other)
     {
         if (other.gameObject.CompareTag("Boss Candy"))
         {
             Debug.Log("Boss Candy hit Boss!");
+            hitCount = hitCount + 1;
+            Debug.Log("hitCount = " + hitCount);
+        }
+    }
+
+    void HitDestroy()
+    {
+        if (hitCount >= 1)
+        {
+            SceneManager.LoadScene(3);
+            Debug.Log("LoadScene 3");
         }
     }
 }
