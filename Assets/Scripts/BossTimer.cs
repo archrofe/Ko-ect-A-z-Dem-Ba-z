@@ -21,7 +21,7 @@ public class BossTimer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F11)) // for DEBUGGING purposes!
         {
-            timer = 20f;
+            timer = 11f;
         }
 
         if (timer <= 1)

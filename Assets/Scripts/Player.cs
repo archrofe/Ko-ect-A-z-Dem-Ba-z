@@ -316,9 +316,9 @@ public class Player : MonoBehaviour
     #region Shortcuts for Debugging
     void Shortcuts()
     {
-        if (Input.GetKey(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
-            count = count + 1000; // for Debugging purposes, to be removed from final build
+            count = count + 3000; // for Debugging purposes, to be removed from final build
             SetCountText();
         }
     }

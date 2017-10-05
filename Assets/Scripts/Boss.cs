@@ -12,17 +12,32 @@ public class Boss : MonoBehaviour
 
     public GameObject bossSpawner1;
     public GameObject bossSpawner2;
+    public GameObject bossSpawner3;
+    public GameObject bossSpawner4;
+    public GameObject bossEvilSpawner1;
+    public GameObject bossEvilSpawner2;
+    public GameObject bossEvilSpawner3;
+    public GameObject bossEvilSpawner4;
+    public GameObject bossEvilSpawner5;
+    public GameObject bossEvilSpawner6;
+
+    public GameObject boss2;
+    public GameObject boss3;
+    public GameObject boss4;
 
     private bool bossStarted = false; // just used for Boss downward movement to Pos1 at start
 
     private bool bossRightDone = false;
 
     public int hitCount = 0;
+    public int evilCount = 0;
 
     // Use this for initialization
     void Start()
     {
-
+        boss2.SetActive(false);
+        boss3.SetActive(false);
+        boss4.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,6 +79,11 @@ public class Boss : MonoBehaviour
         }
 
         HitDestroy();
+
+        if (Input.GetKeyDown(KeyCode.F10))
+        {
+            hitCount = hitCount + 1;
+        }
     }
 
     void GoToPos1()
@@ -89,11 +109,50 @@ public class Boss : MonoBehaviour
             hitCount = hitCount + 1;
             Debug.Log("hitCount = " + hitCount);
         }
+
+        if (other.gameObject.CompareTag("Boss Evil Candy"))
+        {
+            evilCount = evilCount + 1;
+        }
     }
 
     void HitDestroy()
     {
+        if (hitCount == 1)
+        {
+            boss2.SetActive(true);
+            bossSpawner3.SetActive(true);
+            bossSpawner4.SetActive(true);
+        }
+
+        if (hitCount == 2)
+        {
+            boss3.SetActive(true);
+            pos1Speed = 8;
+        }
+
         if (hitCount == 3)
+        {
+            boss2.SetActive(false);
+            boss3.SetActive(false);
+            boss4.SetActive(true);
+
+            bossSpawner1.SetActive(false);
+            bossSpawner2.SetActive(false);
+            bossSpawner3.SetActive(false);
+            bossSpawner4.SetActive(false);
+
+            pos1Speed = 12;
+            bossEvilSpawner1.SetActive(true);
+            bossEvilSpawner2.SetActive(true);
+            bossEvilSpawner3.SetActive(true);
+            bossEvilSpawner4.SetActive(true);
+            bossEvilSpawner5.SetActive(true);
+            bossEvilSpawner6.SetActive(true);
+
+        }
+
+        if (evilCount == 3)
         {
             SceneManager.LoadScene(3);
             Debug.Log("LoadScene 3");

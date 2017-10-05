@@ -307,6 +307,13 @@ public class BossPlayer : MonoBehaviour
                 count = count - ghostPoints;
                 SetCountText();
             }
+
+            if (other.gameObject.CompareTag("Boss Evil Candy"))
+            {
+                other.gameObject.SetActive(false);
+                count = count - littleEvilPoints;
+                SetCountText();
+            }
         }
     }
 
@@ -319,9 +326,9 @@ public class BossPlayer : MonoBehaviour
     #region Shortcuts for Debugging
     void Shortcuts()
     {
-        if (Input.GetKey(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
-            count = count + 1000; // for Debugging purposes, to be removed from final build
+            count = count + 3000; // for Debugging purposes, to be removed from final build
             SetCountText();
         }
     }
