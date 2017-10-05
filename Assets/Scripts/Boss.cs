@@ -32,12 +32,15 @@ public class Boss : MonoBehaviour
     public int hitCount = 0;
     public int evilCount = 0;
 
+    public AudioSource bossMusic;
+
     // Use this for initialization
     void Start()
     {
         boss2.SetActive(false);
         boss3.SetActive(false);
         boss4.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -133,6 +136,8 @@ public class Boss : MonoBehaviour
 
         if (hitCount == 3)
         {
+            bossMusic.gameObject.SetActive(false);
+
             boss2.SetActive(false);
             boss3.SetActive(false);
             boss4.SetActive(true);

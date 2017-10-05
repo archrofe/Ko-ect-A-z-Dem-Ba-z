@@ -58,7 +58,6 @@ public class Player : MonoBehaviour
     private bool wave3Done = false; // adds Ghost & Grav Candy
     private bool wave4Done = false; // adds Holy Candy
     private bool wave5Done = false; // adds Evil Candy
-    private bool wave6Done = false; // starts Hard Wave on True
 
     [Header("Waves")]
     public int wave2Score = 1000; // Score to start Wave 2
