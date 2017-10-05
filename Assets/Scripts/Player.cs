@@ -62,12 +62,27 @@ public class Player : MonoBehaviour
 
     [Header("Waves")]
     public int wave2Score = 1000; // Score to start Wave 2
+    public GameObject wave2Gobj;
+    public Text wave2Text;
+
     public int wave3Score = 3000; // to start Wave 3
+    public GameObject wave3Gobgj;
+    public Text wave3Text;
+
     public int wave4Score = 5000; // to start Wave 4
+    public GameObject wave4GobjBigHoly;
+    public GameObject wave4GobjSmallHoly;
+    public Text wave4TextBigHoly;
+    public Text wave4TextSmallHoly;
+
     public int wave5Score = 7000; // to start Wave 5
+    public GameObject wave5GobjBigEvil;
+    public GameObject wave5GobjSmallEvil;
+    public Text wave5TextBigEvil;
+    public Text wave5TextSmallEvil;
+
     public int wave6Score = 9000; // to start Wave 6
     public int winScore = 10000;
-    //public int bossFightScore = 13000; // to start Boss Fight
 
     [Header("Boss")]
     public GameObject theBoss;
@@ -363,6 +378,9 @@ public class Player : MonoBehaviour
         {
             if (count >= wave2Score) // Score >= Wave 2 start Score?
             {
+                wave2Gobj.SetActive(true);
+                wave2Text.gameObject.SetActive(true);
+
                 redSpawner.SetActive(true); // Activate Red Spawner
                 wave1Done = true; // Flag Wave 1 as completed
             }
@@ -373,6 +391,9 @@ public class Player : MonoBehaviour
         {
             if (count >= wave3Score)
             {
+                wave3Gobgj.SetActive(true);
+                wave3Text.gameObject.SetActive(true);
+
                 ghostSpawner.SetActive(true);
                 wave2Done = true; // Wave 2 done
             }
@@ -383,6 +404,11 @@ public class Player : MonoBehaviour
         {
             if (count >= wave4Score)
             {
+                wave4GobjBigHoly.SetActive(true);
+                wave4GobjSmallHoly.SetActive(true);
+                wave4TextBigHoly.gameObject.SetActive(true);
+                wave4TextSmallHoly.gameObject.SetActive(true);
+
                 holySpawner.SetActive(true);
                 windSpawner.SetActive(true);
                 wave3Done = true; // Wave 3 done
@@ -397,6 +423,11 @@ public class Player : MonoBehaviour
 
                 if (count >= wave5Score)
                 {
+                    wave5GobjBigEvil.SetActive(true);
+                    wave5GobjSmallEvil.SetActive(true);
+                    wave5TextBigEvil.gameObject.SetActive(true);
+                    wave5TextSmallEvil.gameObject.SetActive(true);
+
                     evilSpawner.SetActive(true);
                     gravSpawner.SetActive(true);
                     wave4Done = true; // Wave 4 done
@@ -419,24 +450,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-        /*// to start Boss Fight
-        if (wave5Done == true) // Wave 5 done
-        {
-            if (wave6Done == false) // but in Wave 6 (Hard Wave)
-            {
-                if (count >= bossFightScore)
-                {
-                    blueSpawner.SetActive(false);
-                    redSpawner.SetActive(false);
-                    holySpawner.SetActive(false);
-                    hardGhostSpawner.SetActive(false);
-                    hardEvilSpawner.SetActive(false);
-                    //theBoss.SetActive(true);
-                    Debug.Log("Boss Fight!");
-                }
-            }
-        }*/
     }
     #endregion
 
