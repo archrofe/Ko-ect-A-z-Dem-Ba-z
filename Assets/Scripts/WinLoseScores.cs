@@ -12,6 +12,7 @@ public class WinLoseScores : MonoBehaviour
 	void Start ()
     {
         SetScoreText();
+        Cursor.visible = true;
 	}
 	
 	// Update is called once per frame
@@ -22,7 +23,7 @@ public class WinLoseScores : MonoBehaviour
 
     void SetScoreText()
     {
-        carryoverScore = Player.count;
+        carryoverScore = BossPlayer.count;
         scoreText.text = "Your Score: " + carryoverScore.ToString();
     }
 
