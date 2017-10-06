@@ -10,10 +10,17 @@ public class Timer : MonoBehaviour
     public string clockTime;
     public Text clockText;
 
+    public string sceneName;
+
     // Use this for initialization
     void Start()
     {
         Time.timeScale = 1;
+
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.
+        sceneName = currentScene.name;
     }
 
     // Update is called once per frame
@@ -26,8 +33,16 @@ public class Timer : MonoBehaviour
 
         if (timer <= 1)
         {
-            SceneManager.LoadScene(2);
             Cursor.visible = true;
+
+            if (sceneName == "Drop Ball Game")
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                SceneManager.LoadScene(13);
+            }
         }
 
         if (timer > 0) // if we are greater than Zero

@@ -376,7 +376,16 @@ public class Player : MonoBehaviour
         if (count < 0)
         {
             Cursor.visible = true;
-            SceneManager.LoadScene(2);
+
+            if (sceneName == "Drop Ball Game")
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                SceneManager.LoadScene(13);
+            }
+            
         }
 
         if (count >= winScore)
