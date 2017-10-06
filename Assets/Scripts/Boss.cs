@@ -34,6 +34,8 @@ public class Boss : MonoBehaviour
 
     public AudioSource bossMusic;
 
+    public GameObject bossClouds;
+
     // Use this for initialization
     void Start()
     {
@@ -155,6 +157,7 @@ public class Boss : MonoBehaviour
             bossEvilSpawner5.SetActive(true);
             bossEvilSpawner6.SetActive(true);
 
+            bossClouds.SetActive(true);
         }
 
         if (evilCount == 3)
