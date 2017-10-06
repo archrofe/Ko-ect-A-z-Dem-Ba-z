@@ -86,6 +86,8 @@ public class Player : MonoBehaviour
     [Header("Boss")]
     public GameObject theBoss;
 
+    public string sceneName;
+
     // Use this for initialization
     void Start()
     {
@@ -105,6 +107,12 @@ public class Player : MonoBehaviour
         isSuperOn = false;
 
         Cursor.visible = false;
+
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.
+        sceneName = currentScene.name;
+
     }
 
     // Update is called once per frame
@@ -259,6 +267,8 @@ public class Player : MonoBehaviour
                 SetCountText();
 
                 StartCoroutine(Holy());
+                wave4GobjSmallHoly.SetActive(true);
+                wave4TextSmallHoly.gameObject.SetActive(true);
 
             }
 
@@ -282,6 +292,9 @@ public class Player : MonoBehaviour
                 count = count - bigEvilPoints;
                 SetCountText();
                 littleEvilSpawner.SetActive(true);
+
+                wave5GobjSmallEvil.SetActive(true);
+                wave5TextSmallEvil.gameObject.SetActive(true);
             }
 
             if (other.gameObject.CompareTag("AverageCandy"))
@@ -369,7 +382,16 @@ public class Player : MonoBehaviour
         if (count >= winScore)
         {
             Cursor.visible = true;
-            SceneManager.LoadScene(11);
+
+            if (sceneName == "Drop Ball Game")
+            {
+                SceneManager.LoadScene(11);
+            }
+            else
+            {
+                SceneManager.LoadScene(12);
+            }
+
         }
 
         // to start Wave 2
@@ -404,9 +426,9 @@ public class Player : MonoBehaviour
             if (count >= wave4Score)
             {
                 wave4GobjBigHoly.SetActive(true);
-                wave4GobjSmallHoly.SetActive(true);
+                
                 wave4TextBigHoly.gameObject.SetActive(true);
-                wave4TextSmallHoly.gameObject.SetActive(true);
+                
 
                 holySpawner.SetActive(true);
                 windSpawner.SetActive(true);
@@ -423,9 +445,9 @@ public class Player : MonoBehaviour
                 if (count >= wave5Score)
                 {
                     wave5GobjBigEvil.SetActive(true);
-                    wave5GobjSmallEvil.SetActive(true);
+                    
                     wave5TextBigEvil.gameObject.SetActive(true);
-                    wave5TextSmallEvil.gameObject.SetActive(true);
+                    
 
                     evilSpawner.SetActive(true);
                     gravSpawner.SetActive(true);
