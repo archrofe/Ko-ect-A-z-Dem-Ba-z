@@ -88,6 +88,11 @@ public class Boss : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F10))
         {
             hitCount = hitCount + 1;
+
+            if (hitCount >= 3)
+            {
+                evilCount = evilCount + 1;
+            }
         }
     }
 
